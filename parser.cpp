@@ -183,7 +183,13 @@ Token Parser::nextToken() {
 			error();
 
 		return t;
-	}else if (isdigit(*buffer)) {//É um número
+	}else if (isdigit(*buffer) || *buffer == '-') {//É um número
+		if (*buffer == '-') ++buffer;
+
+		if (*buffer == '0' && isdigit(*buffer++)) {
+			error();
+		}
+
 		while (isdigit(*buffer))
 			++buffer;
 
@@ -215,7 +221,7 @@ Token Parser::nextToken() {
 	} else if (*buffer == '\"') { //É uma string
 		++buffer;
 
-		while (*buffer++ != '\"') {
+		while (1) {
 			if (iscntrl(*buffer)) error();
 
 			if (*buffer == '\\') {
@@ -227,13 +233,20 @@ Token Parser::nextToken() {
 					case 't':
 					case '\"':
 						++buffer;
+						continue;
 					default:
 						error();
+						break;
 
 				}
 			}
+			
+			if (*buffer == '\"') {
+				++buffer;
+				break;
+			}
 
-			//++buffer;
+			++buffer;
 		}
 
 		t.type = Token::STRING;
