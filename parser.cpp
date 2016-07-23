@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "parser.h"
+#include <iostream>
 
 void Parser::parse(const char* input) {
 	buffer = const_cast<char*>(input);
@@ -19,7 +21,7 @@ void Parser::error() {
 	
 	getchar();
 
-	return -1;
+	exit(EXIT_FAILURE);
 }
 
 void Parser::Json() {
@@ -105,8 +107,8 @@ void Parser::ElementosOpt() {
 		lookahead.type == Token::STRING ||
 		lookahead.type == Token::NUMERO ||
 		lookahead.type == Token::_TRUE ||
-		lookahead.type == _FALSE ||
-		lookahead.type == _NULL
+		lookahead.type == Token::_FALSE ||
+		lookahead.type == Token::_NULL
 		) {
 		Elementos();
 	}

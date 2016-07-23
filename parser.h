@@ -34,6 +34,7 @@ private:
 	Token lookahead; //Token corrente
 	Token nextToken(); //Analisador léxico em si
 	int lineNumber;
+	char* buffer;
 
 	void error();
 
