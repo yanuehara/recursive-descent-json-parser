@@ -97,7 +97,7 @@ void Parser::Array() {
 		match(Token::FECHACOLCHETE);
 	}
 	else
-		;
+		error();
 }
 
 void Parser::ElementosOpt() {
