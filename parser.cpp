@@ -99,12 +99,12 @@ void Parser::Pares() { //Chama o par e remove a recursao mais a esquerda
 }
 
 void Parser::Par() {
-	totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
-
 	match(Token::STRING); //Consome a string
 	match(Token::DOISPONTOS); //Consome o ':'
 
 	Valor(); //Chama a funcao para fazer o parsing
+	totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
+
 }
 
 void Parser::P_() {
