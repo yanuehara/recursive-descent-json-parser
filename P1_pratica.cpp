@@ -8,8 +8,7 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
-{	
+int main(int argc, char* argv[]) {	
 	if (argc < 2) {
 		cout << "ERRO: Numero de argumentos insuficientes!" << endl;
 		cout << "Uso: jr.exe <arquivo JSON>" << endl;
