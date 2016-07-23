@@ -36,13 +36,11 @@ private:
 
 	void error();
 
-	void advance()
-	{
+	void advance() {
 		lookahead = nextToken();
 	}
 
-	void match(int t)
-	{
+	void match(int t) {
 		if (lookahead.type == t)
 			advance();
 		else
