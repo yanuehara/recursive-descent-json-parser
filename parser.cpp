@@ -224,6 +224,7 @@ Token Parser::nextToken() {
 
 		while (1) {
 			if (iscntrl(*buffer)) error();
+			if (!isascii(*buffer)) error();
 
 			if (*buffer == '\\') {
 				++buffer;
