@@ -48,7 +48,7 @@ void Parser::Objeto() {
 	if (lookahead.type == Token::ABRECHAVE)
 	{
 		MembrosOpt();
-		match('}');
+		match(Token::FECHACHAVE);
 	}
 	else
 		;
