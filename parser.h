@@ -6,6 +6,7 @@ class Token {
 public:
 	enum TokenType {
 		EOS = 256,
+		_EOF,
 		_TRUE,
 		_FALSE,
 		_NULL,
