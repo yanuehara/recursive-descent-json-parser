@@ -187,7 +187,7 @@ Token Parser::nextToken() {
 	}else if (isdigit(*buffer) || *buffer == '-') {//É um número
 		if (*buffer == '-') ++buffer;
 
-		if (*buffer == '0' && isdigit(*buffer++)) {
+		if (*buffer == '0' && isdigit(*(++buffer))) {
 			error();
 		}
 
