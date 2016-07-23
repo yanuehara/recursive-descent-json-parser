@@ -63,3 +63,26 @@ void Parser::MembrosOpt() {
 	else
 		;
 }
+
+void Parser::Pares() {
+	Par();
+	P_();
+}
+
+void Parser::Par() {
+	match(Token::STRING);
+	match(Token::DOISPONTOS);
+
+	Valor();
+}
+
+void Parser::P_() {
+	if (lookahead.type = Token::VIRGULA) {
+		match(Token::VIRGULA);
+
+		Par();
+		P_();
+	}
+	else
+		;
+}
