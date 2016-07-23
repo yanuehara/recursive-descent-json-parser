@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "parser.h"
 #include <iostream>
 
