@@ -54,7 +54,7 @@ void Parser::Objeto() {
 		match(Token::FECHACHAVE);
 	}
 	else
-		;
+		error();
 }
 
 void Parser::MembrosOpt() {
@@ -183,7 +183,7 @@ Token Parser::nextToken() {
 			error();
 
 		return t;
-	}else if (isdigit(*buffer)) {
+	}else if (isdigit(*buffer)) {//É um número
 		while (isdigit(*buffer))
 			++buffer;
 
@@ -199,7 +199,7 @@ Token Parser::nextToken() {
 		if (*buffer == 'e' || *buffer == 'E') {//Tem parte exponencial
 			++buffer;
 
-			if (*buffer == '+' | *buffer == '-')
+			if (*buffer == '+' || *buffer == '-')
 				++buffer;
 			
 			if (!isdigit(*buffer)) error();//Tem que ter pelo menor um numero depois do sinal/expoente
@@ -210,6 +210,34 @@ Token Parser::nextToken() {
 
 		t.type = Token::NUMERO;
 		t.lexeme= string(beginLexeme, buffer);
+
+		return t;
+	} else if (*buffer == '\"') { //É uma string
+		++buffer;
+
+		while (*buffer++ != '\"') {
+			if (iscntrl(*buffer)) error();
+
+			if (*buffer == '\\') {
+				++buffer;
+
+				switch (*buffer){
+					case '\\':
+					case 'n':
+					case 't':
+					case '\"':
+						++buffer;
+					default:
+						error();
+
+				}
+			}
+
+			//++buffer;
+		}
+
+		t.type = Token::STRING;
+		t.lexeme = string(beginLexeme, buffer);
 
 		return t;
 	}
