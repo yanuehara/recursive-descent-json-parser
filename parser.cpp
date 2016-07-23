@@ -5,9 +5,10 @@
 void Parser::parse(const char* input) {
 	buffer = const_cast<char*>(input);
 	lineNumber = 1;
-	lookahead = nextToken();
-
+	
 	cout << "Começando o parsing..." << endl;
+
+	lookahead = nextToken();
 
 	Json();
 
