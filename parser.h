@@ -5,8 +5,7 @@ using namespace std;
 class Token {
 public:
 	enum TokenType {
-		EOS = 256,
-		_EOF,
+		_EOF = 256,
 		_TRUE,
 		_FALSE,
 		_NULL,
