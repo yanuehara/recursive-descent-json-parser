@@ -16,6 +16,11 @@ void Parser::parse(const char* input) {
 		error();
 
 	cout << "Parsing completo sem erros!" << endl;
+	cout << "Total de Objetos: " << totalObject << endl;
+	cout << "Total de Membros de objetos: " << totalObjectMembers << endl;
+	cout << "Total de Arrays: " << totalArray << endl;
+	cout << "Total de membros de array: " << totalArrayMembers << endl;
+
 	getchar();
 }
 
@@ -51,6 +56,8 @@ void Parser::Valor() {
 void Parser::Objeto() {
 	if (lookahead.type == Token::ABRECHAVE)
 	{
+		totalObject++;
+
 		MembrosOpt();
 		match(Token::FECHACHAVE);
 	}
@@ -74,6 +81,8 @@ void Parser::Pares() {
 }
 
 void Parser::Par() {
+	totalObjectMembers++;
+
 	match(Token::STRING);
 	match(Token::DOISPONTOS);
 
@@ -94,6 +103,8 @@ void Parser::P_() {
 void Parser::Array() {
 	if (lookahead.type == Token::ABRECOLCHETE)
 	{
+		totalArray++;
+
 		ElementosOpt();
 		match(Token::FECHACOLCHETE);
 	}
@@ -120,6 +131,8 @@ void Parser::ElementosOpt() {
 }
 
 void Parser::Elementos() {
+	totalArrayMembers++;
+
 	Valor();
 	E_();
 }
@@ -128,6 +141,7 @@ void Parser::E_() {
 	if (lookahead.type == Token::VIRGULA) {
 		match(Token::VIRGULA);
 		
+		totalArrayMembers++;
 		Valor();
 		E_();
 	}

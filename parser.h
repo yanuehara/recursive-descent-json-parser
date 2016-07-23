@@ -32,6 +32,12 @@ private:
 	Token lookahead; //Token corrente
 	Token nextToken(); //Analisador léxico em si
 	int lineNumber;
+
+	int totalObject = 0;
+	int totalObjectMembers = 0;
+	int totalArray = 0;
+	int totalArrayMembers = 0;
+
 	char* buffer;
 
 	void error();
