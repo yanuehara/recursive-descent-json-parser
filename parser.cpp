@@ -260,29 +260,25 @@ Token Parser::nextToken() {
 	switch (c) {
 		case '{':
 			t.type = Token::ABRECHAVE;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 		case '}':
 			t.type = Token::FECHACHAVE;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 		case '[':
 			t.type = Token::ABRECOLCHETE;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 		case ']':
 			t.type = Token::FECHACOLCHETE;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 		case ',':
 			t.type = Token::VIRGULA;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 		case ':':
 			t.type = Token::DOISPONTOS;
-			t.lexeme = string(beginLexeme, buffer);
 			break;
 	}
-
+	
+	t.lexeme = string(beginLexeme, buffer);
+	
 	return t;
 }
