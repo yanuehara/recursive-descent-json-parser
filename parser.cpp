@@ -223,8 +223,7 @@ Token Parser::nextToken() {
 		++buffer;
 
 		while (1) {
-			if (iscntrl(*buffer)) error();
-			if (!isascii(*buffer)) error();
+			if (!isascii(*buffer) || iscntrl(*buffer)) error();
 
 			if (*buffer == '\\') {
 				++buffer;
