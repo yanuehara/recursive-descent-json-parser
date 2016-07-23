@@ -21,7 +21,6 @@ public:
 
 	int type;
 	string lexeme; // Lexeme
-	char c; // Valor de char simples
 
 };
 
@@ -59,6 +58,4 @@ private:
 	void ElementosOpt();
 	void Elementos();
 	void E_();
-	void Boolean();
-
 };
