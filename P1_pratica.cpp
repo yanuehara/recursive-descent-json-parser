@@ -18,11 +18,9 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
-	FILE *json;
-	errno_t error;
-	error = fopen_s(&json, argv[1], "r");
+	ifstream json(argv[1]);
 
-	if (json == nullptr ) {
+	if (json.fail()) {
 		cout << "ERRO: Erro na abertura do arquivo, verifique o nome e o caminho" << endl;
 
 		return -1;
