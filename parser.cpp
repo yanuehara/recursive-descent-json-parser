@@ -22,15 +22,11 @@ void Parser::error() {
 	return -1;
 }
 
-void
-Parser::Json()
-{
+void Parser::Json() {
 	Valor();
 }
 
-void
-Parser::Valor()
-{
+void Parser::Valor() {
 	//'{', '[', string, numero, TRUE, FALSE, null }
 	switch (lookahead.type) {
 	case Token::ABRECHAVE:
@@ -48,13 +44,21 @@ Parser::Valor()
 	}
 }
 
-void
-Parser::Objeto()
-{
+void Parser::Objeto() {
 	if (lookahead.type == Token::ABRECHAVE)
 	{
 		MembrosOpt();
 		match('}');
+	}
+	else
+		;
+}
+
+void Parser::MembrosOpt() {
+	match('{');
+
+	if (lookahead.type == Token::STRING) {
+		Pares();
 	}
 	else
 		;
