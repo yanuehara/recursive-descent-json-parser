@@ -55,7 +55,7 @@ void Parser::Objeto() {
 }
 
 void Parser::MembrosOpt() {
-	match('{');
+	match(Token::ABRECHAVE);
 
 	if (lookahead.type == Token::STRING) {
 		Pares();
@@ -82,6 +82,50 @@ void Parser::P_() {
 
 		Par();
 		P_();
+	}
+	else
+		;
+}
+
+void Parser::Array() {
+	if (lookahead.type == Token::ABRECOLCHETE)
+	{
+		ElementosOpt();
+		match(Token::FECHACOLCHETE);
+	}
+	else
+		;
+}
+
+void Parser::ElementosOpt() {
+	match(Token::ABRECOLCHETE);
+
+	if (lookahead.type == Token::ABRECHAVE ||
+		lookahead.type == Token::ABRECOLCHETE ||
+		lookahead.type == Token::STRING ||
+		lookahead.type == Token::NUMERO ||
+		lookahead.type == Token::_TRUE ||
+		lookahead.type == _FALSE ||
+		lookahead.type == _NULL
+		) {
+		Elementos();
+	}
+	else
+		;
+	
+}
+
+void Parser::Elementos() {
+	Valor();
+	E_();
+}
+
+void Parser::E_() {
+	if (lookahead.type = Token::VIRGULA) {
+		match(Token::VIRGULA);
+		
+		Valor();
+		E_();
 	}
 	else
 		;
