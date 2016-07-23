@@ -16,7 +16,8 @@ public:
 		FECHACHAVE,
 		ABRECOLCHETE,
 		FECHACOLCHETE,
-		VIRGULA
+		VIRGULA,
+		DOISPONTOS
 	};
 
 	int type;
