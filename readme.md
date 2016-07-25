@@ -1,8 +1,8 @@
 Recursive descent parser for a LL(1) grammar
 
 This was a university assignment part of Compilers I course (taken in 
-2016/1) in [FACOM/UFMS](facom.ufms.br) to build a recursive descent 
-parser based in the following grammar (approximately JSON 
+2016/1) in [FACOM/UFMS](http://facom.ufms.br) to build a recursive 
+descent parser based in the following grammar (approximately JSON 
 specification):
 
 Json: Value EOF;
