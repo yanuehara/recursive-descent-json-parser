@@ -68,6 +68,8 @@ void Parser::Valor() {
 		) {
 		advance(); //Consome
 	}
+	else
+		error();
 }
 
 //Faz o parsing de um objeto
