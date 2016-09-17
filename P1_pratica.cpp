@@ -12,6 +12,7 @@ Copyright (c) 2016 Yan Uehara
 #include <cstdlib>
 
 #include "parser\parser.h"
+#include "AST\AST.h"
 
 using namespace std;
 
@@ -46,7 +47,7 @@ int main(int argc, char* argv[]) {
 	json.close(); //Fecha o arquivo
 	buffer[file_length] = '\0'; //Termina a string com '\0'
 
-	json_parser.parse(buffer); //Chama o parser
+	AST::JsonPtr root = json_parser.parse(buffer); //Chama o parser
 
     return 0;
 }

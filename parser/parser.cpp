@@ -11,7 +11,7 @@ Copyright (c) 2016 Yan Uehara
 #include <iostream>
 
 //Parser
-void Parser::parse(const char* input) {
+AST::JsonPtr Parser::parse(const char* input) {
 	buffer = const_cast<char*>(input);
 	lineNumber = 1;
 	

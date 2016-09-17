@@ -8,6 +8,7 @@ Copyright (c) 2016 Yan Uehara
 */
 
 #include <string>
+#include "..\AST\AST.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ public:
 //Classe parser
 class Parser {
 public:
-	void parse(const char*); //Parser
+	AST::JsonPtr parse(const char*); //Parser
 
 private:
 	Token lookahead; //Token corrente
