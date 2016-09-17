@@ -32,5 +32,8 @@
     <ClInclude Include="utils\Writer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AST\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -51,6 +51,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AST\Node.h" />
     <ClInclude Include="parser\parser.h" />
     <ClInclude Include="utils\Writer.h" />
   </ItemGroup>
