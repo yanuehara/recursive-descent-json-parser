@@ -1,10 +1,10 @@
 #include "Node.h"
-#include "ValueNode.h"
+#include "Value.h"
 
 namespace AST {
 	class Json :public Node {
 		private:
-			ValueNodePtr value;
+			ValuePtr value;
 		public:
 			Json() {
 				value = nullptr;
@@ -12,7 +12,7 @@ namespace AST {
 			void write(Writer& write) const {
 				value->write(write);
 			}
-			void add(ValueNodePtr value) {
+			void add(ValuePtr value) {
 				this->value = value;
 			}
 	};
