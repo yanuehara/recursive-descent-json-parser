@@ -56,20 +56,23 @@ void Parser::Json() {
 
 //Parse do Valor
 void Parser::Valor() {
-	if(lookahead.type == Token::ABRECHAVE)
-		Objeto(); //Objeto
-	else if(lookahead.type == Token::ABRECOLCHETE)
-		Array(); //Array
-	else if (lookahead.type == Token::STRING ||
-		lookahead.type == Token::NUMERO ||
-		lookahead.type == Token::_TRUE ||
-		lookahead.type == Token::_FALSE ||
-		lookahead.type == Token::_NULL
-		) {
-		advance(); //Consome
+	switch (lookahead.type) {
+		case Token::ABRECHAVE:
+			Objeto();
+			break;
+		case Token::ABRECOLCHETE:
+			Array();
+			break;
+		case Token::STRING:
+		case Token::NUMERO:
+		case Token::_TRUE:
+		case Token::_FALSE:
+		case Token::_NULL:
+			advance();
+			break;
+		default:
+			error();
 	}
-	else
-		error();
 }
 
 //Faz o parsing de um objeto
