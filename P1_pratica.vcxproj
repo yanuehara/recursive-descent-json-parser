@@ -52,10 +52,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="parser\parser.h" />
+    <ClInclude Include="utils\Writer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="P1_pratica.cpp" />
     <ClCompile Include="parser\parser.cpp" />
+    <ClCompile Include="utils\Writer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
