@@ -38,5 +38,8 @@
     <ClInclude Include="AST\ValueNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AST\Json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
