@@ -9,6 +9,10 @@ namespace AST {
 		private:
 			string lexeme;
 		public:
+			ValueNode() {
+				//Default constructor
+			}
+
 			ValueNode(string lexeme) {
 				this->lexeme = lexeme;
 			}
