@@ -51,6 +51,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AST\False.h" />
     <ClInclude Include="AST\Json.h" />
     <ClInclude Include="AST\Node.h" />
     <ClInclude Include="AST\True.h" />
