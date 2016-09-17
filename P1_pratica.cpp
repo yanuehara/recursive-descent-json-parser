@@ -11,7 +11,7 @@ Copyright (c) 2016 Yan Uehara
 #include <fstream>
 #include <cstdlib>
 
-#include "parser.h"
+#include "parser\parser.h"
 
 using namespace std;
 

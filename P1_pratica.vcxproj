@@ -51,11 +51,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="parser.h" />
+    <ClInclude Include="parser\parser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="P1_pratica.cpp" />
-    <ClCompile Include="parser.cpp" />
+    <ClCompile Include="parser\parser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
