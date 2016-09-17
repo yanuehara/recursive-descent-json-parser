@@ -53,5 +53,8 @@
     <ClInclude Include="AST\Null.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AST\String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
