@@ -55,6 +55,7 @@
     <ClInclude Include="AST\Json.h" />
     <ClInclude Include="AST\Node.h" />
     <ClInclude Include="AST\Null.h" />
+    <ClInclude Include="AST\Par.h" />
     <ClInclude Include="AST\String.h" />
     <ClInclude Include="AST\True.h" />
     <ClInclude Include="AST\Value.h" />

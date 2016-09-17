@@ -56,5 +56,8 @@
     <ClInclude Include="AST\String.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AST\Par.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
