@@ -2,7 +2,7 @@
 #include "ValueNode.h"
 
 namespace AST {
-	class Value {
+	class Value : public Node {
 		private:
 			ValueNodePtr value;
 		public:
