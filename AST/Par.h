@@ -31,6 +31,7 @@ namespace AST {
 			}
 
 			void write(Writer& write) const {
+				write.beginLine();
 				write.write(chave);
 				write.write(':');
 				valor->write(write);

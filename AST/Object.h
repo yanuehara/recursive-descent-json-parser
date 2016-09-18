@@ -20,6 +20,8 @@ namespace AST {
 			}
 
 			void write(Writer& write) const {
+				write.beginLine();
+				write.write("\n");
 				write.beginBlock();
 
 				int i = 0;
@@ -38,6 +40,8 @@ namespace AST {
 					write.write(",\n");
 					i++;
 				}
+				
+				write.write("\n");
 				write.endBlock();
 			}
 	};
