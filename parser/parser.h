@@ -71,11 +71,6 @@ private:
 	void Valor();
 	void Objeto();
 	void MembrosOpt();
-	void Pares();
-	void P_();
-	void Par();
 	void Array();
 	void ElementosOpt();
-	void Elementos();
-	void E_();
 };

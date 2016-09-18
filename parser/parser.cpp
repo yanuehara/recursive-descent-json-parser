@@ -103,7 +103,6 @@ void Parser::MembrosOpt() {
 
 			if (lookahead.type == Token::VIRGULA) {
 				match(Token::VIRGULA);
-				continue;
 			} else {
 				break;
 			}
@@ -138,31 +137,22 @@ void Parser::ElementosOpt() {
 		lookahead.type == Token::_FALSE ||
 		lookahead.type == Token::_NULL
 		) {
-		Elementos(); //Chama a funcao para fazer o parsing
+
+		while (1) {
+			totalArrayMembers++; //Soma 1 ao total de elementos
+			Valor();
+
+			if (lookahead.type == Token::VIRGULA) {
+				match(Token::VIRGULA); //Consome uma ','
+			}
+			else {
+				break;
+			}
+		}
 	}
 	else
 		; //Ou e vazio
 	
-}
-
-void Parser::Elementos() {
-	totalArrayMembers++; //Soma 1 ao total de elementos de array
-
-	Valor(); //Faz o parsing do valor
-	E_(); //Continua a fazer o parsing dos elementos (se existirem)
-}
-
-void Parser::E_() {
-	if (lookahead.type == Token::VIRGULA) {
-		match(Token::VIRGULA); //Consome uma ','
-		
-		totalArrayMembers++; //Soma 1 ao total de elementos
-
-		Valor(); //Faz o parsing do valor
-		E_(); //Continua a fazer o parsing dos elementos (se existirem)
-	}
-	else
-		; //Ou e vazio
 }
 
 //Analisador sintatico
