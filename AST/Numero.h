@@ -11,9 +11,7 @@ namespace AST {
 		Numero(string lexeme) : ValueNode(lexeme) {
 		}
 		void write(Writer& write) const {
-			write.write('"');
 			ValueNode::write(write);
-			write.write('"');
 		}
 	};
 }
