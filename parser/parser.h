@@ -46,11 +46,6 @@ private:
 	Token nextToken(); //Analisador léxico em si
 	int lineNumber; //Numero da linha atual
 
-	int totalObject = 0; //Total de objetos
-	int totalObjectMembers = 0; //Total de membros de objetos
-	int totalArray = 0; //Total de arrays
-	int totalArrayMembers = 0; //Total de membros de arrays
-
 	char* buffer; //Buffer de entrada
 
 	void error(); //Mostra mensagem de erro com a linha do erro e termina
@@ -67,7 +62,7 @@ private:
 	}
 
 	//Funções do analisador sintatico
-	void Json(AST::JsonPtr);
+	AST::JsonPtr Json();
 	AST::ValuePtr Valor();
 	AST::ValueNodePtr Objeto();
 	void MembrosOpt(AST::ValueNodePtr);

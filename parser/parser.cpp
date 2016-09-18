@@ -20,29 +20,15 @@ AST::JsonPtr Parser::parse(const char* input) {
 	//Gera o primeiro token
 	lookahead = nextToken();
 
-	AST::JsonPtr json = new AST::Json;
-
 	//Chama o entry-point da gramatica
-	Json(json);
+	AST::JsonPtr json =  Json();
 
 	//Se a funcao terminou mas o lookahead nao e EOF
 	//gera um erro e termina
 	if (lookahead.type != Token::_EOF)
 		error();
 
-	//Imprime as informacoes pedidas
-	/*
-	cout << "Parsing completo sem erros!" << endl;
-	cout << "Total de Objetos: " << totalObject << endl;
-	cout << "Total de Membros de objetos: " << totalObjectMembers << endl;
-	cout << "Total de Arrays: " << totalArray << endl;
-	cout << "Total de membros de array: " << totalArrayMembers << endl;
-	
-	getchar();
-	*/
-
-	Writer write;
-	json->write(write);
+	return json;
 }
 
 //Mostra o aviso de erro com a linha do erro e termina
@@ -55,8 +41,12 @@ void Parser::error() {
 
 //Entry-point da gramatica
 // Json: Valor;
-void Parser::Json(AST::JsonPtr json) {
+AST::JsonPtr Parser::Json() {
+	AST::JsonPtr json = new AST::Json;
+	
 	json->add(Valor());
+	
+	return json;
 }
 
 //Parse do Valor
@@ -105,8 +95,6 @@ AST::ValueNodePtr Parser::Objeto() {
 	
 	if (lookahead.type == Token::ABRECHAVE)
 	{
-		totalObject++; //Adiciona 1 ao total de objetos
-
 		MembrosOpt(objeto); //Chama a funcao para fazer o parsing dos membros
 
 		match(Token::FECHACHAVE); //Da match em '}'
@@ -146,7 +134,6 @@ AST::ParPtr Parser::Par() {
 	match(Token::DOISPONTOS); //Consome o ':'
 
 	par->setValor(Valor());
-	totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
 
 	return par;
 }
@@ -157,9 +144,8 @@ AST::ValueNodePtr Parser::Array() {
 
 	if (lookahead.type == Token::ABRECOLCHETE)
 	{
-		totalArray++; //Soma 1 ao total de arrays
-
 		ElementosOpt(array); //Chama a funcao para fazer o parsing dos elementos
+
 		match(Token::FECHACOLCHETE); //Consome o ']'
 	}
 	else
@@ -198,7 +184,6 @@ void Parser::ElementosOpt(AST::ValueNodePtr array) {
 }
 
 AST::ValuePtr Parser::Elemento() {
-	totalArrayMembers++; //Soma 1 ao total de elementos
 	return Valor();
 }
 
