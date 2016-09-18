@@ -20,8 +20,10 @@ AST::JsonPtr Parser::parse(const char* input) {
 	//Gera o primeiro token
 	lookahead = nextToken();
 
+	AST::JsonPtr json = new AST::Json;
+
 	//Chama o entry-point da gramatica
-	Json();
+	Json(json);
 
 	//Se a funcao terminou mas o lookahead nao e EOF
 	//gera um erro e termina
@@ -29,13 +31,18 @@ AST::JsonPtr Parser::parse(const char* input) {
 		error();
 
 	//Imprime as informacoes pedidas
+	/*
 	cout << "Parsing completo sem erros!" << endl;
 	cout << "Total de Objetos: " << totalObject << endl;
 	cout << "Total de Membros de objetos: " << totalObjectMembers << endl;
 	cout << "Total de Arrays: " << totalArray << endl;
 	cout << "Total de membros de array: " << totalArrayMembers << endl;
-
+	
 	getchar();
+	*/
+
+	Writer write;
+	json->write(write);
 }
 
 //Mostra o aviso de erro com a linha do erro e termina
@@ -50,12 +57,15 @@ void Parser::error() {
 
 //Entry-point da gramatica
 // Json: Valor;
-void Parser::Json() {
-	Valor();
+void Parser::Json(AST::JsonPtr json) {
+	json->add(Valor());
 }
 
 //Parse do Valor
-void Parser::Valor() {
+AST::ValuePtr Parser::Valor() {
+	AST::ValuePtr value = new AST::Value;
+	AST::ValueNodePtr valuenode = nullptr;
+
 	switch (lookahead.type) {
 		case Token::ABRECHAVE:
 			Objeto();
@@ -64,15 +74,31 @@ void Parser::Valor() {
 			Array();
 			break;
 		case Token::STRING:
+			valuenode = new AST::String(lookahead.lexeme);
+			advance();
+			break;
 		case Token::NUMERO:
+			valuenode = new AST::Numero(lookahead.lexeme);
+			advance();
+			break;
 		case Token::_TRUE:
+			valuenode = new AST::True();
+			advance();
+			break;
 		case Token::_FALSE:
+			valuenode = new AST::False();
+			advance();
+			break;
 		case Token::_NULL:
+			valuenode = new AST::Null();
 			advance();
 			break;
 		default:
 			error();
 	}
+
+	value->add(valuenode);
+	return value;
 }
 
 //Faz o parsing de um objeto

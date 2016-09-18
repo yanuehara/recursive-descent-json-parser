@@ -67,8 +67,8 @@ private:
 	}
 
 	//Funções do analisador sintatico
-	void Json();
-	void Valor();
+	void Json(AST::JsonPtr);
+	AST::ValuePtr Valor();
 	void Objeto();
 	void MembrosOpt();
 	void Array();
