@@ -10,32 +10,33 @@ using namespace std;
 namespace AST {
 	class Par : public Node {
 		private:
-			String* chave ;
-			ValueNodePtr valor;
+			std::string chave;
+			ValuePtr valor;
 		public:
 			Par() {
 				//Default constructor
 			}
 			
-			Par(String* chave, ValueNodePtr valor) {
+			Par(std::string chave, ValuePtr valor) {
 				this->chave = chave;
 				this->valor = valor;
 			}
 			
-			void setChave(String* chave) {
+			void setChave(std::string chave) {
 				this->chave = chave;
 			}
 
-			void setValor(ValueNodePtr valor) {
+			void setValor(ValuePtr valor) {
 				this->valor = valor;
 			}
 
 			void write(Writer& write) const {
-				chave->write(write);
+				write.write(chave);
 				write.write(':');
 				valor->write(write);
 			}
 	};
+	typedef Par* ParPtr;
 }
 
 #endif

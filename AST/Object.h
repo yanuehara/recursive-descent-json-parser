@@ -9,30 +9,39 @@
 namespace AST {
 	class Object : public ValueNode {
 		private:
-			list<Par> pares;
+			list<ParPtr> pares;
 		public:
 			Object() {
 				//Default constructor
 			}
 
-			void insert(Par& par) {
-				pares.push_front(par);
+			void insert(ParPtr par) {
+				pares.push_back(par);
 			}
 
 			void write(Writer& write) const {
 				write.beginBlock();
-				for (list<Par>::const_iterator iterator = pares.begin(); iterator != pares.end(); iterator++) {
-					iterator->write(write);
+
+				int i = 0;
+				for (list<ParPtr>::const_iterator iterator = pares.begin(); iterator != pares.end(); iterator++) {
+					
+					AST::ParPtr((*iterator))->write(write);
 
 					if (pares.size() == 1) {
 						break;
 					}
+
+					if (i == pares.size() - 1) {
+						break;
+					}
 					
-					write.write(L"%s",',\n');
+					write.write(",\n");
+					i++;
 				}
 				write.endBlock();
 			}
 	};
+	typedef Object* ObjectPtr;
 }
 
 #endif
