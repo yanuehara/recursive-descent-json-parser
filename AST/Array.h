@@ -8,34 +8,41 @@
 namespace AST {
 	class Array : public ValueNode {
 		private:
-			list<ValueNode> elementos;
+			list<ValuePtr> elementos;
 		public:
 			Array() {
 				//Default constructor
 			}
 
-			void insert(ValueNode& elemento) {
-				elementos.push_front(elemento);
+			void insert(ValuePtr elemento) {
+				elementos.push_back(elemento);
 			}
 
 			void write(Writer& write) const {
 				write.write('[');
 				write.tab();
 				
-				for (list<ValueNode>::const_iterator iterator = elementos.begin(); iterator != elementos.end(); iterator++) {
-					iterator->write(write);
+				int i = 0;
+				for (list<ValuePtr>::const_iterator iterator = elementos.begin(); iterator != elementos.end(); iterator++) {
+					AST::ValuePtr((*iterator))->write(write);
 
 					if (elementos.size() == 1) {
 						break;
 					}
 
-					write.write(L"%s", ',\n');
+					if (i == elementos.size() - 1) {
+						break;
+					}
+
+					write.write(",\n");
+					i++;
 				}
 
 				write.backspace();
 				write.write(']');
 			}
 	};
+	typedef Array* ArrayPtr;
 }
 
 #endif

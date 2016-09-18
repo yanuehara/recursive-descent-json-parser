@@ -153,18 +153,22 @@ AST::ParPtr Parser::Par() {
 
 //Faz o parsing de um array
 AST::ValueNodePtr Parser::Array() {
+	AST::ValueNodePtr array = new AST::Array;
+
 	if (lookahead.type == Token::ABRECOLCHETE)
 	{
 		totalArray++; //Soma 1 ao total de arrays
 
-		ElementosOpt(); //Chama a funcao para fazer o parsing dos elementos
+		ElementosOpt(array); //Chama a funcao para fazer o parsing dos elementos
 		match(Token::FECHACOLCHETE); //Consome o ']'
 	}
 	else
 		error();
+
+	return array;
 }
 
-void Parser::ElementosOpt() {
+void Parser::ElementosOpt(AST::ValueNodePtr array) {
 	match(Token::ABRECOLCHETE); //Consome o '{'
 
 	if (lookahead.type == Token::ABRECHAVE ||
@@ -177,8 +181,8 @@ void Parser::ElementosOpt() {
 		) {
 
 		while (1) {
-			totalArrayMembers++; //Soma 1 ao total de elementos
-			Valor();
+
+			AST::ArrayPtr(array)->insert(Elemento());
 
 			if (lookahead.type == Token::VIRGULA) {
 				match(Token::VIRGULA); //Consome uma ','
@@ -191,6 +195,11 @@ void Parser::ElementosOpt() {
 	else
 		; //Ou e vazio
 	
+}
+
+AST::ValuePtr Parser::Elemento() {
+	totalArrayMembers++; //Soma 1 ao total de elementos
+	return Valor();
 }
 
 //Analisador sintatico

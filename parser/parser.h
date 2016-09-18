@@ -73,5 +73,6 @@ private:
 	void MembrosOpt(AST::ValueNodePtr);
 	AST::ParPtr Par();
 	AST::ValueNodePtr Array();
-	void ElementosOpt();
+	void ElementosOpt(AST::ValueNodePtr);
+	AST::ValuePtr Elemento();
 };
