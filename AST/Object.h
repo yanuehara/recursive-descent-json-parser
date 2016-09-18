@@ -41,8 +41,10 @@ namespace AST {
 					i++;
 				}
 				
-				write.write("\n");
-				write.endBlock();
+				write.write('\n');
+				write.backspace();
+				write.beginLine();
+				write.write('}');
 			}
 	};
 	typedef Object* ObjectPtr;

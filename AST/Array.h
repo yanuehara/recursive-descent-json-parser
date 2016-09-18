@@ -38,6 +38,7 @@ namespace AST {
 					i++;
 				}
 
+				write.write('\n');
 				write.backspace();
 				write.beginLine();
 				write.write(']');
