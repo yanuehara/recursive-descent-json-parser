@@ -39,6 +39,7 @@ namespace AST {
 				}
 
 				write.backspace();
+				write.beginLine();
 				write.write(']');
 			}
 	};
