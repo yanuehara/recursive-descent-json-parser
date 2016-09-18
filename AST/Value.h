@@ -6,7 +6,7 @@ namespace AST {
 		private:
 			ValueNodePtr value;
 		public:
-			Value() {
+			Value() : Node(){
 				value = nullptr;
 			}
 			void write(Writer& write) const {

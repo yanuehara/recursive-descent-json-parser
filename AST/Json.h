@@ -6,7 +6,7 @@ namespace AST {
 		private:
 			ValuePtr value;
 		public:
-			Json() {
+			Json() : Node(){
 				value = nullptr;
 			}
 			void write(Writer& write) const {
