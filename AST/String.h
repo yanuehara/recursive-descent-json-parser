@@ -9,9 +9,9 @@ namespace AST {
 		String(string lexeme) : ValueNode(lexeme) {
 		}
 		void write(Writer& write) const {
-			write.write('"');
+			//write.write('"');
 			ValueNode::write(write);
-			write.write('"');
+			//write.write('"');
 		}
 	};
 }
