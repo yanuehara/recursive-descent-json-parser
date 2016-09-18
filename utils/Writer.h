@@ -17,10 +17,11 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <string>
+
 #ifndef WIN32
 #include <wchar.h>
 #endif
-
 
 //////////////////////////////////////////////////////////
 //
@@ -51,6 +52,10 @@ public:
   void write(int c)
   {
     fputc(c, out);
+  }
+
+  void write(std::string str) {
+	  fprintf(out, str.c_str());
   }
 
   void write(const wchar_t*, ...);

@@ -21,7 +21,7 @@ namespace AST {
 			}
 
 			void write(Writer& write) const {
-				write.write(L"%s", lexeme);
+				write.write(lexeme);
 			}
 	};
 	typedef ValueNode* ValueNodePtr;
