@@ -49,6 +49,8 @@ int main(int argc, char* argv[]) {
 
 	AST::JsonPtr root = json_parser.parse(buffer); //Chama o parser
 
+	cout << "Atravessando a arvore e escrevendo os nos:\n" << endl;
+
 	Writer write;
 	root->write(write);
 
