@@ -13,5 +13,6 @@
 #include "Par.h"
 #include "Object.h"
 #include "Array.h"
+#include "Numero.h"
 
 #endif
