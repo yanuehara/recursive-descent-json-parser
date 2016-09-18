@@ -1,3 +1,6 @@
+#ifndef _AST_ARRAY_H
+#define _AST_ARRAY_H
+
 #include <iostream>
 #include <list>
 #include "ValueNode.h"
@@ -34,3 +37,5 @@ namespace AST {
 			}
 	};
 }
+
+#endif

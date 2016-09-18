@@ -1,3 +1,6 @@
+#ifndef _AST_JSON_H
+#define _AST_JSON_H
+
 #include "Node.h"
 #include "Value.h"
 
@@ -19,3 +22,5 @@ namespace AST {
 	typedef Json* JsonPtr;
 
 }
+
+#endif

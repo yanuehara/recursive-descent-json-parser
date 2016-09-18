@@ -1,3 +1,6 @@
+#ifndef _AST_PAR_H
+#define _AST_PAR_H
+
 #include <string>
 #include "Node.h"
 #include "String.h"
@@ -34,3 +37,5 @@ namespace AST {
 			}
 	};
 }
+
+#endif

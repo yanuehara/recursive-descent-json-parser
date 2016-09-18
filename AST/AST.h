@@ -1,4 +1,6 @@
 //All the AST includes
+#ifndef _AST
+#define _AST
 
 #include "Node.h"
 #include "ValueNode.h"
@@ -11,3 +13,5 @@
 #include "Par.h"
 #include "Object.h"
 #include "Array.h"
+
+#endif

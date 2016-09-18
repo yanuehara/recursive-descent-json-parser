@@ -1,3 +1,6 @@
+#ifndef _AST_OBJECT_H
+#define _AST_OBJECT_H
+
 #include <iostream>
 #include <list>
 #include "ValueNode.h"
@@ -31,3 +34,5 @@ namespace AST {
 			}
 	};
 }
+
+#endif

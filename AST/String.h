@@ -1,3 +1,6 @@
+#ifndef _AST_STRING_H
+#define _AST_STRING_H
+
 #include "ValueNode.h"
 
 namespace AST {
@@ -12,3 +15,5 @@ namespace AST {
 		}
 	};
 }
+
+#endif

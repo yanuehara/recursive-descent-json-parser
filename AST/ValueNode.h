@@ -1,3 +1,6 @@
+#ifndef _AST_VALUENODE_H
+#define _AST_VALUENODE_H
+
 #include <string>
 #include "Node.h"
 #include "..\utils\Writer.h"
@@ -24,3 +27,5 @@ namespace AST {
 	typedef ValueNode* ValueNodePtr;
 
 }
+
+#endif

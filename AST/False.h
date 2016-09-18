@@ -1,3 +1,6 @@
+#ifndef _AST_FALSE_H
+#define _AST_FALSE_H
+
 #include "ValueNode.h"
 
 namespace AST {
@@ -7,3 +10,5 @@ namespace AST {
 		}
 	};
 }
+
+#endif
