@@ -82,6 +82,7 @@ void Parser::Objeto() {
 		totalObject++; //Adiciona 1 ao total de objetos
 
 		MembrosOpt(); //Chama a funcao para fazer o parsing dos membros
+
 		match(Token::FECHACHAVE); //Da match em '}'
 	}
 	else
@@ -92,32 +93,22 @@ void Parser::MembrosOpt() {
 	match(Token::ABRECHAVE); //Consome o '{'
 
 	if (lookahead.type == Token::STRING) { //Membro e um par
-		Pares(); //Chama a funcao para fazer o parsing
-	}
-	else
-		; //Ou e vazio
-}
+		
+		while (1) {
+			match(Token::STRING);
+			match(Token::DOISPONTOS); //Consome o ':'
 
-void Parser::Pares() { //Chama o par e remove a recursao mais a esquerda
-	Par();
-	P_();
-}
+			Valor();
+			totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
 
-void Parser::Par() {
-	match(Token::STRING); //Consome a string
-	match(Token::DOISPONTOS); //Consome o ':'
+			if (lookahead.type == Token::VIRGULA) {
+				match(Token::VIRGULA);
+				continue;
+			} else {
+				break;
+			}
+		}
 
-	Valor(); //Chama a funcao para fazer o parsing
-	totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
-
-}
-
-void Parser::P_() {
-	if (lookahead.type == Token::VIRGULA) {
-		match(Token::VIRGULA); //Consome a ','
-
-		Par(); //Faz o parsing de um par
-		P_(); //Continua a fazer o parsing da lista (se ela continuar)
 	}
 	else
 		; //Ou e vazio
