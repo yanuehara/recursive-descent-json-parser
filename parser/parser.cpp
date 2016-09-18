@@ -49,8 +49,6 @@ AST::JsonPtr Parser::parse(const char* input) {
 void Parser::error() {
 	cout << "ERRO na linha: " << lineNumber << " abortando... " << endl;
 	cout << "Pressione qualquer tecla para sair" << endl;
-	
-	getchar();
 
 	exit(EXIT_FAILURE);
 }
@@ -68,10 +66,10 @@ AST::ValuePtr Parser::Valor() {
 
 	switch (lookahead.type) {
 		case Token::ABRECHAVE:
-			Objeto();
+			valuenode = Objeto();
 			break;
 		case Token::ABRECOLCHETE:
-			Array();
+			valuenode = Array();
 			break;
 		case Token::STRING:
 			valuenode = new AST::String(lookahead.lexeme);
@@ -102,30 +100,31 @@ AST::ValuePtr Parser::Valor() {
 }
 
 //Faz o parsing de um objeto
-void Parser::Objeto() {
+AST::ValueNodePtr Parser::Objeto() {
+	AST::ValueNodePtr objeto = new AST::Object;
+	
 	if (lookahead.type == Token::ABRECHAVE)
 	{
 		totalObject++; //Adiciona 1 ao total de objetos
 
-		MembrosOpt(); //Chama a funcao para fazer o parsing dos membros
+		MembrosOpt(objeto); //Chama a funcao para fazer o parsing dos membros
 
 		match(Token::FECHACHAVE); //Da match em '}'
 	}
 	else
 		error();
+	
+	return objeto;
 }
 
-void Parser::MembrosOpt() {
+void Parser::MembrosOpt(AST::ValueNodePtr objeto) {
 	match(Token::ABRECHAVE); //Consome o '{'
 
 	if (lookahead.type == Token::STRING) { //Membro e um par
 		
 		while (1) {
-			match(Token::STRING);
-			match(Token::DOISPONTOS); //Consome o ':'
 
-			Valor();
-			totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
+			AST::ObjectPtr(objeto)->insert(Par());
 
 			if (lookahead.type == Token::VIRGULA) {
 				match(Token::VIRGULA);
@@ -139,8 +138,21 @@ void Parser::MembrosOpt() {
 		; //Ou e vazio
 }
 
+AST::ParPtr Parser::Par() {
+	AST::ParPtr par = new AST::Par;
+
+	par->setChave(lookahead.lexeme);
+	match(Token::STRING);
+	match(Token::DOISPONTOS); //Consome o ':'
+
+	par->setValor(Valor());
+	totalObjectMembers++; //Adiciona 1 ao total de membros de um objeto
+
+	return par;
+}
+
 //Faz o parsing de um array
-void Parser::Array() {
+AST::ValueNodePtr Parser::Array() {
 	if (lookahead.type == Token::ABRECOLCHETE)
 	{
 		totalArray++; //Soma 1 ao total de arrays
