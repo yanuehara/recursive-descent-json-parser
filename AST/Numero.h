@@ -1,3 +1,12 @@
+/*
+Aluno: Yan Uehara de Moraes
+RGA: 2014.1904.013-8
+
+Numero.h: Numero class definition
+
+Copyright (c) 2016 Yan Uehara
+*/
+
 #ifndef _AST_NUMERO_H
 #define _AST_NUMERO_H
 

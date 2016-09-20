@@ -1,3 +1,12 @@
+/*
+Aluno: Yan Uehara de Moraes
+RGA: 2014.1904.013-8
+
+Value.h: Value class definition
+
+Copyright (c) 2016 Yan Uehara
+*/
+
 #ifndef _AST_VALUE_H
 #define _AST_VALUE_H
 

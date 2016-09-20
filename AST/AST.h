@@ -1,3 +1,12 @@
+/*
+Aluno: Yan Uehara de Moraes
+RGA: 2014.1904.013-8
+
+AST.h: All AST includes
+
+Copyright (c) 2016 Yan Uehara
+*/
+
 //All the AST includes
 #ifndef _AST
 #define _AST
